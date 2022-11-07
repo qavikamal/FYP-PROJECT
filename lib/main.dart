@@ -11,6 +11,7 @@ import './screens/cart.dart';
 import './screens/product_details/product_details.dart';
 import './provider/product_provider.dart';
 import './routes/routes.dart';
+import './screens/login_registration/login_reg_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             primarySwatch: Colors.indigo,
             visualDensity: VisualDensity.adaptivePlatformDensity),
-        home: const NavigatorWidget(),
+        home: const WelcomeScreen(),
         routes: {
           Routes.productDetails: (context) => const ProductDetails(),
           Routes.cartScreen: (context) => const CartScreen(),
