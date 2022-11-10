@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/screens/orders.dart';
 
 import '../screens/favorite.dart';
-// import '../screens/profile.dart';
+ import '../screens/profile.dart';
 import '../screens/home.dart';
+import '../screens/login_registration/login_reg_screen.dart';
 
 class NavigatorWidget extends StatefulWidget {
   const NavigatorWidget({Key? key}) : super(key: key);
@@ -14,14 +15,14 @@ class NavigatorWidget extends StatefulWidget {
 
 class _NavigatorWidgetState extends State<NavigatorWidget> {
   int _selectedindex = 0;
-
   @override
   Widget build(BuildContext context) {
     const List<Widget> _allpages = [
       HomePage(),
       OrderScreen(),
       FavoriteScreen(),
-      // Profile(),
+      Profile()
+
     ];
 
     void onItemtap(int index) {
@@ -43,7 +44,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
           fontSize: 11,
           fontWeight: FontWeight.bold,
         ),
-        selectedItemColor: Colors.indigo,
+        selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
         backgroundColor: Colors.white,
         items: const [
@@ -66,12 +67,13 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
                 size: 27,
               ),
               label: "Favorite"),
-          // BottomNavigationBarItem(
-          //     icon: Icon(
-          //       Icons.person_outline,
-          //       size: 27,
-          //     ),
-          //     label: "Profile"),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person_outline,
+                size: 27,
+              ),
+              label: "Profile"),
+
         ],
         currentIndex: _selectedindex,
         onTap: onItemtap,

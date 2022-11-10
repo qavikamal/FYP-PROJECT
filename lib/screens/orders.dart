@@ -12,7 +12,7 @@ class OrderScreen extends StatelessWidget {
     var order = Provider.of<OrderProvider>(context);
     return Scaffold(
       appBar: AppBar(
-       
+        backgroundColor: Colors.black,
         title: const Text(
           "Orders Summary",
           style: TextStyle(fontSize: 22),

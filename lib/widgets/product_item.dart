@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../models/product.dart';
 import '../provider/cart_provider.dart';
 import '../routes/routes.dart';
@@ -33,7 +32,7 @@ class ProductItems extends StatelessWidget {
                   height: _screenSize.height * 0.135,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(product.imageUrl),
+                        image: NetworkImage(product.imageUrl),
                         fit: BoxFit.contain),
                   ),
                 ),

@@ -187,7 +187,7 @@ class _AddUserProductState extends State<AddUserProduct> {
                               textAlign: TextAlign.center,
                             ),
                           )
-                        : Image.asset(
+                        : Image.network(
                             _productImage.text,
                             fit: BoxFit.contain,
                           ),

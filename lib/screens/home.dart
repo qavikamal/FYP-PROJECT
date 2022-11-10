@@ -17,6 +17,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<ProductProvider>(context, listen: false).getAllTodos();
+    });
+  }
+  @override
   Widget build(BuildContext context) {
     Size _screenSize = MediaQuery.of(context).size;
     var productProvider = Provider.of<ProductProvider>(context);
@@ -24,6 +31,7 @@ class _HomePageState extends State<HomePage> {
     var cart = Provider.of<CartProvider>(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: const Text(
           "Zulu Shop",
           style: TextStyle(fontSize: 22),

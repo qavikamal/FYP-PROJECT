@@ -14,6 +14,7 @@ class FavoriteScreen extends StatelessWidget {
     final fav = productProviderObject.selectedFavorite;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: const Text(
           "Favorite",
           style: TextStyle(fontSize: 22),

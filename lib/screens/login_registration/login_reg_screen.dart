@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/screens/login_registration/WholeSaler_login.dart';
 import './custom_button_widget.dart';
 import '../../widgets/navigator.dart';
 
@@ -18,7 +19,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            "assets/images/welcome.svg",
+            'assets/images/accent.png',
             height: 150,
           ),
           const SizedBox(height: 20),
@@ -38,12 +39,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           CustomButton(
             color: Colors.black,
             textColor: Colors.white,
-            text: "Login",
+            text: "Login As WholeSaler",
             onPress: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const NavigatorWidget(),
+                  builder: (context) => LoginScreen(),
                 ),
               );
             },
@@ -52,12 +53,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           CustomButton(
             color: Colors.white,
             textColor: Colors.black,
-            text: "Sign Up",
+            text: "Login As Retailer",
             onPress: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const NavigatorWidget(),
+                  builder: (context) => LoginScreen(),
                 ),
               );
             },
