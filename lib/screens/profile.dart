@@ -1,21 +1,40 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/screens/login_registration/wholesaler_registration.dart';
 
+import '../provider/product_provider.dart';
 import '../widgets/profile_listtile.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
-
   @override
   State<Profile> createState() => _ProfileState();
+
 }
 
 bool _darkMode = true;
 
 class _ProfileState extends State<Profile> {
   @override
+  String username= "";
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<DataClass>(context, listen: false).getData();
+
+    });
+  }
+  @override
   Widget build(BuildContext context) {
+    var userProvider = Provider.of<DataClass>(context);
+
+    setState(() {
+      username = (userProvider.json_data['data']['fullname']);
+    });
+
+    //String username = userProvider.us['username'].toString();
     return Scaffold(
 
       appBar: AppBar(
@@ -57,7 +76,7 @@ class _ProfileState extends State<Profile> {
                               )),
                           onPressed: () {},
                           child: Text(
-                            "Edit Profile",
+                          " default value",
                             style: TextStyle(color: Colors.white),
                           )),
                     ),
@@ -72,7 +91,7 @@ class _ProfileState extends State<Profile> {
           Padding(
             padding: EdgeInsets.only(left: 20, top: 15, bottom: 14),
             child: Text(
-              "Account",
+               username ?? "Account",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
@@ -170,3 +189,5 @@ class _ProfileState extends State<Profile> {
     );
   }
 }
+
+

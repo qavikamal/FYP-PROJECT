@@ -1,21 +1,25 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_app/screens/login_registration/wholesaler_registration.dart';
 //import './custome_checkbox.dart';
 import './input_field.dart';
 //import './custom_button_widget.dart';
 import './theme.dart';
 import './custom_primary_button.dart';
-import  '../profile.dart';
+//import  '../profile.dart';
 import '../../widgets/navigator.dart';
+import 'package:http/http.dart' as http;
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
   final TextEditingController emailController = TextEditingController(text: '');
-  final TextEditingController passwordController =
-  TextEditingController(text: '');
+  final TextEditingController passwordController = TextEditingController(text:'');
 
   bool passwordVisible = false;
   void togglePassword() {
@@ -23,9 +27,58 @@ class _LoginScreenState extends State<LoginScreen> {
       passwordVisible = !passwordVisible;
     });
   }
+  bool islogin = false;
+
+
+  login(String email , password  ) async{
+    userModel data = userModel(
+        email: email,
+        password: password
+    );
+    var provider = Provider.of<DataClass>(context, listen: false);
+    await provider.postDataLogin(data);
+    if (provider.json_data['success'] == true) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => NavigatorWidget()));
+    }
+    }
+
+   //  try {
+   //    http.Response response = await http.post(
+   //        Uri.parse('http://localhost:3000/api/user/login'),
+   //        headers: {"Content-Type": "application/json"},
+   //        body: jsonEncode(data)
+   //    );
+   //    var jsondata = jsonDecode(response.body);
+   //               print(jsondata['success']);
+   //
+   //    if (jsondata['success'] == false) {
+   //        _showDialog(context);
+   //        setState(() {
+   //          data_passing = jsondata;
+   //
+   //        });
+   //
+   //             }
+   //    else {
+   //      setState(() {
+   //        islogin = true;
+   //        Navigator.push(
+   //            context,
+   //            MaterialPageRoute(builder: (context) => NavigatorWidget()));
+   //      });
+   //    }
+   //  }
+   //
+   //  catch(e){
+   // print(e);
+   //  }
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -96,13 +149,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 textValue: 'Login',
                 textColor: textBlack,
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                      builder: (context) => NavigatorWidget(),
-                  ));
+                 login(emailController.text ,passwordController.text);
                 },
-              ),
+                  ),
+
               SizedBox(
                 height: 24,
               ),
@@ -150,6 +200,29 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-    ;
+
   }
 }
+
+void _showDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text("Invalid User"),
+        content: Text("Enter Correct Details Thank You!"),
+        actions: <Widget>[
+          ElevatedButton(
+            child: new Text("OK"),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
+
+

@@ -5,6 +5,7 @@ import '../screens/favorite.dart';
  import '../screens/profile.dart';
 import '../screens/home.dart';
 import '../screens/login_registration/login_reg_screen.dart';
+import '../screens/login_registration/wholesaler_registration.dart';
 
 class NavigatorWidget extends StatefulWidget {
   const NavigatorWidget({Key? key}) : super(key: key);
@@ -12,7 +13,6 @@ class NavigatorWidget extends StatefulWidget {
   @override
   State<NavigatorWidget> createState() => _NavigatorWidgetState();
 }
-
 class _NavigatorWidgetState extends State<NavigatorWidget> {
   int _selectedindex = 0;
   @override
@@ -23,7 +23,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
       FavoriteScreen(),
       Profile()
 
-    ];
+          ];
 
     void onItemtap(int index) {
       setState(() {

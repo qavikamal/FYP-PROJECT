@@ -25,7 +25,7 @@ class UserProductsScreen extends StatelessWidget {
               icon: const Icon(Icons.add))
         ],
       ),
-      drawer: const MyDrawer(),
+      drawer:  MyDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(4.0),
         child: ListView.builder(

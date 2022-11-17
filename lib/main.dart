@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app/screens/login_registration/wholesaler_registration.dart';
 
 import './screens/orders.dart';
 import 'screens/user_products/add_products.dart';
@@ -33,6 +34,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => OrderProvider(),
         ),
+        ChangeNotifierProvider(create: (_)=>DataClass()),
+
+
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

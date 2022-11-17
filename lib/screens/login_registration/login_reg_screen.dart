@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/screens/login_registration/WholeSaler_login.dart';
 import './custom_button_widget.dart';
-import '../../widgets/navigator.dart';
+
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -11,6 +11,7 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

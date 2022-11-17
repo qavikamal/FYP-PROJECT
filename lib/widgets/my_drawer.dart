@@ -24,7 +24,7 @@ class MyDrawer extends StatelessWidget {
           InkWell(
             onTap: () => Navigator.of(context).pushReplacement(
               MaterialPageRoute(
-                builder: (context) => const NavigatorWidget(),
+                builder: (context) =>  NavigatorWidget(),
               ),
             ),
             child: const ListTile(
